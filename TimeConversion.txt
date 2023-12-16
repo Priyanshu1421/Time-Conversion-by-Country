@@ -1,0 +1,32 @@
+import java.time.Instant;
+import java.time.OffsetDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+import java.util.Date;
+
+public class Main
+{
+	public static void main(String args[])
+	{
+		Date date = new Date();
+		Instant instant = date.toInstant();
+		System.out.println(instant);
+
+		// The corresponding Date-Time in Chicago
+		ZonedDateTime zdtChicago = instant.atZone(ZoneId.of("America/Chicago"));
+		System.out.println(zdtChicago);
+
+		// The corresponding Date-Time in Mumbai
+		ZonedDateTime zdtChicago = instant.atZone(ZoneId.of("Asia/Mumbai"));
+		System.out.println(zdtMumbai);
+
+		// The corresponding Date-Time at timezone offset of -05:00 hours
+		OffsetDateTime odtAtOffsetMinus0500 = instant.atOffset(ZoneOffset.of("-05:00"));
+		System.out.println(odtAtOffsetMinus0500);
+
+		// The corresponding Date-Time at timezone offset of +05:30 hours
+		OffsetDateTime adtAtOffset0530 = instant.atOffset(ZoneOffset.of("+05:30"));
+		System.out.println(odtAtOffset0530);
+	}
+}
